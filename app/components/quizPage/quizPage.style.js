@@ -21,10 +21,11 @@ export default StyleSheet.create({
     padding: 2,
   },
   answerButtons: {
-    alignSelf: 'flex-start',
     flexDirection: 'column',
     minHeight: 50,
     padding: 5,
+    flex: 1,
+    alignItems: 'flex-start',
   },
   radioContainer: {
     height: 180,
