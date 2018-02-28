@@ -25,7 +25,7 @@ class QuizPage extends Component {
       const questionCards = [];
       for (let i = 0; i < questionBank.length; i += 1) {
         const options = [];
-        let thisOption = 0;
+        let thisOption = -1;
         questionBank[i].questionOptions.forEach((option) => {
           if (questionBank[i].userOption.option === option.option) {
             thisOption = option.question_id;
@@ -44,12 +44,12 @@ class QuizPage extends Component {
             <RadioForm
               style={styles.answerButtons}
               radio_props={options}
-              initial={thisOption}
               buttonColor="#000000"
-              onPress={(value) => { this.setState({ value }); }}
+              initial={thisOption}
+              onPress={(value, label) => { this.props.answerHandle(value, label); }}
             />
           </View>
-                           </View>);
+        </View>);
       }
       return (
         <ScrollView>
@@ -86,6 +86,7 @@ class QuizPage extends Component {
 
 QuizPage.propTypes = {
   questionBank: PropTypes.array.isRequired,
+  answerHandle: PropTypes.func.isRequired,
 };
 
 QuizPage.defaultProps = {

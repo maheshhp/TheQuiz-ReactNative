@@ -109,11 +109,11 @@ export default class App extends Component<Props> {
     if (this.state.screenId === 0) {
       return (<LoginPage
         loginHandle={this.loginHandle}
-        />);
+      />);
     }
     return (
       <QuizPage
-        answerHandle={this.loginHandle}
+        answerHandle={this.answerHandle}
         leaderBoardHandle={this.leaderBoardHandle}
         userName={this.state.userName}
         questionBank={this.state.questionBank}
