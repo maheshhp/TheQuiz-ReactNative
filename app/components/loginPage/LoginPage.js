@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput,TouchableWithoutFeedback } from 'react-native';
 import PropTypes from 'prop-types';
 import Button from 'react-native-button';
 
@@ -7,6 +7,9 @@ import styles from './loginPage.style';
 
 
 class LoginPage extends Component {
+  state = {
+    text: ''
+  }
   render() {
     return (
       <View style={styles.headerContainer}>
@@ -41,7 +44,10 @@ class LoginPage extends Component {
             </Text>
             <TextInput
               style={{ height: 40, borderColor: 'black', borderWidth: 2 }}
+              value={this.state.text}
+              onChangeText={(text) => this.setState({text})}
             />
+            <TouchableWithoutFeedback onPressIn={() => { this.props.loginHandle(this.state.text);}}>
             <View
               style={{
                 borderRadius: 10,
@@ -50,8 +56,8 @@ class LoginPage extends Component {
                 alignSelf: 'center',
                 marginTop: 50,
               }}
-              onPress={() => {}}
             >
+            
               <Text style={{
                 fontSize: 18,
                 fontWeight: '800',
@@ -61,6 +67,7 @@ class LoginPage extends Component {
               >Login
               </Text>
             </View>
+            </TouchableWithoutFeedback>
           </View>
         </View>
       </View>
